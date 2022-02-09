@@ -6,7 +6,7 @@ import {
     getSingleProductError,
     fetchSingleProduct
 } from './slices/productsSlice';
-import {set_loading, load_all_products, set_error} from './slices/filterSlice';
+import {setLoading, loadProducts, set_error} from './slices/filterSlice';
 import axios from 'axios'
 
 
@@ -42,13 +42,13 @@ export const fetchSingleProductItem = (url) => async dispatch => {
 
 export const fetchFilterProducts = url => async dispatch =>{
     try {
-        dispatch(set_loading(true))
+        dispatch(setLoading(true))
         const { data } = await axios.get(url);
-        dispatch(load_all_products(data.sort((a, b) => a.price - b.price)));
+        dispatch(loadProducts(data.sort((a, b) => a.price - b.price)));
     } catch (error) {
         //console.log(error)
         dispatch(set_error())
     } finally {
-        dispatch(set_loading(false))
+        dispatch(setLoading(false))
     }
 }

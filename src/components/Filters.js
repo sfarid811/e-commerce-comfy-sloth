@@ -149,20 +149,19 @@ const Filters = () => {
 					<div className='form-control'>
 						<h5>price</h5>
 						<div className='price'>{formatPrice(price)}</div>
+						<div className="box">
 						<input
-		
+						className='slider'
 							type='range'
 							name='price'
 							value={price}
-							// by default e.target.value is string ,so we need to change it into number
-							// by typecasting using parseInt(+)
 							onChange={(e) => {
-								// setCurrPrice(e.target.value);
 								dispatch(update_filters(e));
 							  }}
 							min={min_price}
 							max={max_price}
 						/>
+						</div>
 						{/* end of price */}
 						{/* shipping */}
 						<div className='form-control shipping'>
@@ -266,9 +265,52 @@ const Wrapper = styled.section`
 		text-decoration: underline;
 	}
 	.price {
-		margin-bottom: 0.25rem;
+		margin-bottom: 1.2rem;
 	}
+	.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  padding: 20px 10px;
+  border-radius: 5px;
+  box-shadow: -2px -2px 8px rgba(255, 255, 255, 1),
+              -2px -2px 12px rgba(255, 255, 255, 0.5),
+              inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+              2px 2px 8px rgba(0, 0, 0, .3);
+}
+	.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ecf0f3;
+  box-shadow: inset -2px -2px 8px rgba(255, 255, 255, 1),
+              inset -2px -2px 12px rgba(255, 255, 255, 0.5),
+              inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+              inset 2px 2px 8px rgba(0, 0, 0, .3);
+  outline: none;
+  cursor: pointer;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: -2px -2px 8px rgba(255, 255, 255, 1),
+              -2px -2px 12px rgba(255, 255, 255, 0.5),
+              inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+              2px 2px 8px rgba(0, 0, 0, .3);
+  background-color: #6B7280;
+}
 	.shipping {
+		margin-top: 1.2rem;
 		display: grid;
 		grid-template-columns: auto 1fr;
 		align-items: center;

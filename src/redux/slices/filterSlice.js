@@ -21,7 +21,7 @@ const filterSlice = createSlice({
 		},
 	},
 	reducers: {
-		load_all_products: (state, action) => {
+		loadProducts: (state, action) => {
 			state.all_products = action.payload
 			state.filtered_products = [...state.all_products]
 			// console.log(state.all_products)
@@ -36,7 +36,7 @@ const filterSlice = createSlice({
 			// second way
 			state.filters = { ...state.filters, max_price: maxPrice, price: maxPrice }
 		},
-		set_loading: (state, {payload}) => {
+		setLoading: (state, {payload}) => {
 			state.get_products_loading = payload
 		},
 		set_error: (state) => {
@@ -50,7 +50,7 @@ const filterSlice = createSlice({
 		updateSort: (state,  {payload}) => {
 			state.sort = payload
 		},
-		sort_products: (state) => {
+		sortProducts: (state) => {
             let tempProducts = [...state.filtered_products];
             const sortBy = state.sort;
             if (sortBy === "price_lowest") {
@@ -104,7 +104,7 @@ const filterSlice = createSlice({
 			  state.filters[name] = value;
 			// console.log(state.filters)
 		},
-		filter_products: (state) => {
+		applyFilters: (state) => {
 			const { all_products } = state;
 			const { text, company, category, color, price, shipping } = state.filters
 			let tempProducts = [...all_products];
@@ -160,14 +160,14 @@ const filterSlice = createSlice({
 })
 
 export const {
-	load_all_products,
-	set_loading,
+	loadProducts,
+	setLoading,
 	set_error,
 	view_toggler,
 	updateSort,
-	sort_products,
+	sortProducts,
 	update_filters,
 	clearFilters,
-	filter_products,
+	applyFilters,
 } = filterSlice.actions
 export default filterSlice.reducer

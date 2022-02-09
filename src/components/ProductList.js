@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import GridView from "./GridView";
 import ListView from "./ListView";
 import { useSelector, useDispatch } from "react-redux";
-import { sort_products, filter_products } from "../redux/slices/filterSlice";
+import { sortProducts, applyFilters } from "../redux/slices/filterSlice";
 
 const ProductList = () => {
   const {
@@ -16,11 +16,11 @@ const ProductList = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(sort_products());
+    dispatch(sortProducts());
   }, [sort]);
 
   useEffect(() => {
-    dispatch(filter_products());
+    dispatch(applyFilters());
   }, [filters]);
 
   if (products.length < 1) {
