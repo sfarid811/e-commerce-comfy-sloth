@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { FaCheck } from 'react-icons/fa'
 import AmountButtons from './AmountButtons'
 import { useDispatch } from 'react-redux'
+import { addToCart } from '../redux/slices/cartSlice';
 
 const AddToCart = ({product}) => {
   const dispatch = useDispatch()
@@ -46,7 +47,9 @@ const AddToCart = ({product}) => {
 				<Link
 					to='/cart'
 					className='btn'
-					
+					onClick={() =>
+						dispatch(addToCart({ id, color: mainColor, amount, product }))
+					}
 				>
 					add to cart
 				</Link>
