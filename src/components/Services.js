@@ -20,6 +20,7 @@ const Services = () => {
 					</p>
 				</article>
 				<div className='services-center'>
+          
 					{services.map(({ id, icon, title, text }) => {
 						return (
 							<article className='service' key={id}>

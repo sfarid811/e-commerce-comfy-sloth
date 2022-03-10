@@ -10,9 +10,9 @@ const cartSlice = createSlice({
 	},
 	reducers: {
 		addToCart: (state, action) => {
-			const { id, color, amount, product } = action.payload
+			const { id, color, amount, product } = action.payload;
 			// check if item is already in the cart
-			const tempItem = state.cart.find((i) => i.id === id + color)
+			const tempItem = state.cart.find((i) => i.id === id + color);
 			if (tempItem) {
 				const tempCart = state.cart.map((cartItem) => {
 					if (cartItem.id === id + color) {
@@ -45,12 +45,12 @@ const cartSlice = createSlice({
 			// console.log(state.cart)
 		},
 		removeCartItem: (state, action) => {
-			const id = action.payload
-			const tempCart = state.cart.filter((item) => item.id !== id)
-			state.cart = tempCart
+			const id = action.payload;
+			const tempCart = state.cart.filter((item) => item.id !== id);
+			state.cart = tempCart;
 		},
 		toggleAmount: (state, action) => {
-			const { id, val: value } = action.payload
+			const { id, val: value } = action.payload;
 			const tempCart = state.cart.map((item) => {
 				if (item.id === id) {
 					if (value === 'inc') {

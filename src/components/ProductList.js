@@ -10,9 +10,7 @@ const ProductList = () => {
     grid_view,
     sort,
     filters,
-  } = useSelector(state => state.filter);
-
- 
+  } = useSelector((state) => state.filter);
 
   const dispatch = useDispatch();
   useEffect(() => {

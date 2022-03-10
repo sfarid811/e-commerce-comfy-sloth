@@ -10,7 +10,7 @@ const AddToCart = ({product}) => {
   const dispatch = useDispatch()
 	const { id, stock, colors } = product;
   const [mainColor, setMainColor] = useState(colors[0])
-	const [amount, setAmount] = useState(1)
+	const [amount, setAmount] = useState(1);
 
 	// increase amount
 	const increase = () => amount < stock && setAmount(amount + 1)
