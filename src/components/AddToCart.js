@@ -5,6 +5,8 @@ import { FaCheck } from 'react-icons/fa'
 import AmountButtons from './AmountButtons'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../redux/slices/cartSlice';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const AddToCart = ({product}) => {
   const dispatch = useDispatch()
@@ -47,12 +49,18 @@ const AddToCart = ({product}) => {
 				<Link
 					to='/cart'
 					className='btn'
-					onClick={() =>
+					onClick={() => {
 						dispatch(addToCart({ id, color: mainColor, amount, product }))
+            toast.success("Product Added Successfully", {
+              duration: 2000,
+              position: 'top-right',
+            });
+          }
 					}
 				>
 					add to cart
 				</Link>
+        <Toaster/>
 			</div>
 		</Wrapper>
   );
